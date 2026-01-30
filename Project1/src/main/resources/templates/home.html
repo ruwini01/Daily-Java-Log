@@ -1,32 +1,36 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="/fragments/head :: head">
+<head th:replace="~{/fragments/head :: head}"></head>
 
 <body class="sub_page">
 
   <div class="hero_area">
     <div class="bg-box">
-      <img src="images/hero-bg.jpg" alt="">
+      <img th:src="@{/images/hero-bg.jpg}" alt="">
     </div>
 
-    <header th:replace="/fragments/header :: header">
-
+    <header th:replace="~{/fragments/header :: header}"></header>
   </div>
 
   <!-- about section -->
-
   <section class="about_section layout_padding">
-    <div class="container  ">
+    <div class="container">
 
+      <div class="posts" th:each="post : ${posts}">
+        <h3 th:text="${post.title}">Title</h3>
+        <!-- use correct field name: body OR content -->
+        <p th:text="${post.body}">Content</p>
+
+        <hr>
+      </div>
       
+
     </div>
   </section>
-
   <!-- end about section -->
 
-  <footer th:replace="/fragments/footer :: footer">
+  <footer th:replace="~{/fragments/footer :: footer}"></footer>
 
 </body>
-
 </html>
